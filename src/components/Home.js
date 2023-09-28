@@ -14,14 +14,15 @@ const Home = () => {
 
   if (!users) return <h2>Loading..</h2>;
 
-  return;
-  <>
-    <div>
-      {users.map((user, index) => {
-        return <h2 key={index}>{user.name}</h2>;
-      })}
-    </div>
-  </>;
+  return (
+    <>
+      <div>
+        {users.map((user, index) => {
+          return <h2 key={index}>{user.name}</h2>;
+        })}
+      </div>
+    </>
+  );
 };
 
 export default Home;

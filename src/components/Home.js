@@ -1,25 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { BASE_URL, routes } from "../api/routes";
+import { useFetcher } from "../util/swr";
 
 const Home = () => {
-  const [users, setUsers] = useState(null);
+  const { data, error, isLoading } = useFetcher(routes.PRODUCTS);
 
-  useEffect(() => {
-    async function fetchUsers() {
-      const response = await fetch("http://localhost:3001");
-      const data = await response.json();
-      setUsers(data);
-    }
-    fetchUsers();
-  }, []);
-
-  if (!users) return <h2>Loading..</h2>;
+  if (error) return <div>Failed to fetch users</div>;
+  if (isLoading)
+    return (
+      <div>
+        <h2>Loading...</h2>
+      </div>
+    );
 
   return (
     <>
       <div>
-        {users.map((user, index) => {
-          return <h2 key={index}>{user.name}</h2>;
-        })}
+        {data &&
+          data.map((product, index) => {
+            return (
+              <>
+                <h2 key={index}>{product.title}</h2>
+                <h2 key={index}>{product.price}</h2>
+              </>
+            );
+          })}
       </div>
     </>
   );

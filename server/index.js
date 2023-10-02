@@ -10,6 +10,11 @@ const data = [
         avatar: "https://randomuser.me/api/portraits/women/44.jpg",
     },
     {
+        name:"Justin Beiber",
+        age:"28",
+        avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    },
+    {
         name: "Mary Jane",
         age: 25,
         avatar: "https://randomuser.me/api/portraits/women/50.jpg",
